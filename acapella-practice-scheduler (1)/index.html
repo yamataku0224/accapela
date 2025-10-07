@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acapella Practice Scheduler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'custom-bg': '#f0f4f8',
+              'custom-surface': '#ffffff',
+              'custom-primary': '#2563eb',
+              'custom-secondary': '#4f46e5',
+              'custom-text-primary': '#1e293b',
+              'custom-text-secondary': '#475569',
+              'status-free': '#10b981',
+              'status-maybe': '#f59e0b',
+              'status-lecture': '#ef4444',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-custom-bg text-custom-text-primary">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Acapella Practice Scheduler",
+  "description": "A web application for a cappella circles to coordinate practice by sharing members' free periods between university lectures. Users can set their schedule and view the availability of others to easily find common free time.",
+  "requestFramePermissions": []
+}
