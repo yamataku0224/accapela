@@ -88,14 +88,23 @@ const App: React.FC = () => {
   const handleUpdateSchedule = useCallback((day: DayOfWeek, period: number, status: PeriodStatus) => {
     setCurrentUser(prevUser => {
       if (!prevUser) return null;
-      const newSchedule = { ...prevUser.schedule };
-      const daySchedule = newSchedule[day];
-      const slotIndex = daySchedule.findIndex(s => s.period === period);
-      if (slotIndex !== -1) {
-        daySchedule[slotIndex] = { ...daySchedule[slotIndex], status };
-      }
+
+      // Correctly update the schedule for the specific day without mutating the original state.
+      const updatedDaySchedule = prevUser.schedule[day].map(slot =>
+        slot.period === period ? { ...slot, status } : slot
+      );
+
+      // Create a new schedule object with the updated day.
+      const newSchedule = {
+        ...prevUser.schedule,
+        [day]: updatedDaySchedule,
+      };
+
       const updatedUser = { ...prevUser, schedule: newSchedule };
-      setAllMembers(all => all.map(m => m.id === 'currentUser' ? updatedUser : m));
+      
+      // Update the user in the allMembers list as well.
+      setAllMembers(all => all.map(m => (m.id === 'currentUser' ? updatedUser : m)));
+      
       return updatedUser;
     });
   }, []);
